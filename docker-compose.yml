@@ -1,0 +1,13 @@
+services:
+  app:
+    container_name: blog_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: blog_api
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Port=5432;Database=blog_db;Username=postgres;Password=passwords
+    ports:
+      - "8008:8080"
